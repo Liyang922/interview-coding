@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="color">Click me</button>
+    <div id="digit"><div id="stripe">0123456789</div></div>
+
+    <style>
+      #color {
+        transition-property: background-color;
+        transition-duration: 3s;
+      }
+      #digit {
+        width: 0.5em;
+        overflow: hidden;
+        font: 32px monospace;
+        cursor: pointer;
+      }
+      #stripe {
+        display: inline-block;
+      }
+      #stripe.animate {
+        transform: translate(-90%);
+        transition-property: transform;
+        transition-duration: 9s;
+        transition-timing-function: linear;
+      }
+    </style>
+
+    <script>
+      color.onclick = function () {
+        this.style.backgroundColor = "red";
+      };
+      stripe.onclick = function () {
+        let sec = new Date().getSeconds() % 10;
+        // for instance, -3s here starts the animation from the 3rd second
+        stripe.style.transitionDelay = "-" + sec + "s";
+        stripe.classList.add("animate");
+      };
+    </script>
+  </body>
+</html>

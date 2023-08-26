@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <style>
+    ul {
+      list-style: none;
+    }
+  </style>
+  <body>
+    <ul>
+      <li>全选<input type="checkbox" id="all" /></li>
+      <li>Java<input type="checkbox" class="item" /></li>
+      <li>javaScript<input type="checkbox" class="item" /></li>
+      <li>C++<input type="checkbox" class="item" /></li>
+      <li>python<input type="checkbox" class="item" /></li>
+      <li>.net<input type="checkbox" class="item" /></li>
+    </ul>
+
+    <script>
+      // 补全代码
+      let all = document.getElementById("all");
+      let itemList = document.querySelectorAll(".item");
+      all.addEventListener("change", function () {
+        if (all.checked) {
+          itemList.forEach((item) => {
+            item.checked = true;
+          });
+        } else {
+          itemList.forEach((item) => {
+            item.checked = false;
+          });
+        }
+      });
+
+      for (item of itemList) {
+        item.onchange = function () {
+          if (!item.checked) {
+            all.checked = false;
+          } else {
+            let ifAll = true;
+            itemList.forEach((item) => {
+              if (!item.checked) ifAll = false;
+            });
+            if (ifAll) all.checked = true;
+          }
+        };
+      }
+
+      //解法2：
+    //   document.querySelectorAll返回的NodeList，是类数组对象，只有forEach方法，不能用其他数组方法
+    //   Array.from
+      var options = Array.from(document.querySelectorAll(".item"));
+      all.onchange = () => {
+        // 其他按钮的状态与全选一致
+        options.forEach((x) => (x.checked = all.checked));
+      };
+      options.forEach((item) => {
+        item.onchange = function () {
+        // 全选按钮的状态与是否every一致
+          all.checked = options.every((x) => x.checked);
+        };
+      });
+    </script>
+  </body>
+</html>

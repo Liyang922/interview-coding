@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>圣杯布局</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrap{
+            min-width: 600px;
+        }
+
+        #header,#footer{
+            height: 50px;
+            width: 100%;
+            background: grey;
+        }
+        #middle,#left,#right{
+            float: left;
+        }
+        #content{
+            overflow: hidden;/*BFC容器*/
+            padding: 0  200px;
+        }
+        #middle{
+            /* 继承conten宽度的100% */
+            width: 100%;        
+            background: green;
+        }
+        #left,#right{
+            width: 200px;
+            height: 200px;
+            background: pink;
+        }
+        #left{
+            /* 移到content的最左边 */
+            margin-left: -100%;
+            /* 相对定位不会脱离文档流 */
+
+            /* left本来不能设置left属性，但是有定位属性后就可以 */
+            position: relative;
+            left: -200px;
+        }
+        #right{
+            /* left版块是被挪动了，但是right在HTML里的写法是跟在left的后面，所以会出现在content的右边 */
+            margin-left: -200px;
+            position: relative;
+            right: -200px;
+        }
+        /* 等高布局：防止某一列内容过多溢出 */
+        #middle,#left,#right{
+            float: left;
+            padding-bottom: 10000px;
+            margin-bottom: -10000px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div id="header">
+            header
+        </div>
+        <div id="content">
+            <div id="middle">
+                <p>middle</p>
+                <p>middle</p>
+                <p>middle</p>
+            </div>
+            <div id="left">
+                left
+            </div>
+            <div id="right">
+                right
+            </div>
+        </div>
+        <div id="footer">
+            footer
+        </div>
+    </div>
+</body>
+</html>

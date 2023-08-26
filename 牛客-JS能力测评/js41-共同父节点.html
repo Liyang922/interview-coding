@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <script>
+      function commonParentNode(oNode1, oNode2) {
+        //contains
+        if (oNode2.contains(oNode1)) return oNode2;
+
+        let parentNode = oNode1;
+        while (true) {
+          if (parentNode.contains(oNode2)) {
+            return parentNode;
+          }
+          parentNode = oNode1.parentNode;
+        }
+      }
+
+      function test() { var parent = document.createElement('DIV'); var a = document.createElement('DIV'); var b = document.createElement('DIV'); parent.appendChild(a); parent.appendChild(b); var c = commonParentNode(a, b); return c === parent; }
+      console.log(test());
+   </script>
+  </body>
+</html>

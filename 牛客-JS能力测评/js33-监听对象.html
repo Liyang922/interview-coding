@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <style>
+      ul {
+        list-style: none;
+      }
+    </style>
+    <ul></ul>
+
+    <script>
+      var ul = document.querySelector("ul");
+      var person = {
+        sex: "男",
+        age: "25",
+        name: "王大锤",
+        height: 28,
+        weight: 32,
+      };
+      const _render = (element) => {
+        var str = `<li>姓名：<span>${person.name}</span></li>
+                     <li>性别：<span>${person.sex}</span></li>
+                     <li>年龄：<span>${person.age}</span></li>
+                     <li>身高：<span>${person.height}</span></li>
+                     <li>体重：<span>${person.weight}</span></li>`;
+        element.innerHTML = str;
+      };
+      _render(ul);
+      // 补全代码
+      //   for(let prop in person) {
+      //       Object.defineProperty(person, prop, {
+      //           set: function(value) {
+      //             // 会循环引用，要设置值时，调用set，调用set时，又触发set
+      //               person[prop] = value;
+      //               _render(ul);
+      //           }
+
+      //       });
+      //   }
+
+      //   要在Object.defineProperty()方法外部获取到object的属性值
+      Object.keys(person).map((item) => {
+        observeObj(person, item, person[item]);
+      });
+      
+      function observeObj(obj, prop, value) {
+        Object.defineProperty(person, prop, {
+            // 不能只写set，否则无法获取到属性值，都是undefined
+          get: function () {
+            return value;
+          },
+          set: function (newValue) {
+            if (newValue !== value) {
+              value = newValue;
+              _render(ul);
+            }
+          },
+        });
+      }
+
+      person.age = 44;
+    </script>
+  </body>
+</html>

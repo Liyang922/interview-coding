@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <script>
+        // 一代15位，二代18位，最后一位有可能是x或X
+      const _isCard = (number) => {
+        var regx = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+        let regexp = /(^\d{15}$)|(^\d{18}$)|(^\d{17}[xX\d]$)/;
+        return regx.test(number);
+      };
+    </script>
+  </body>
+</html>

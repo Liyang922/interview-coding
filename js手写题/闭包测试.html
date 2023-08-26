@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function makeCounter() {
+        let count = 0;
+
+        return function () {
+          return count++;
+        };
+      }
+
+      let counter = makeCounter();
+      let counter2 = makeCounter(); // 通过不同的makeCounter创建，有独立的外部词法环境
+
+      console.log(counter()); // 0
+      console.log(counter()); // 1
+
+      console.log(counter2()); // 0
+      console.log(counter2()); // 1
+
+      // 对象
+      function Counter() {
+        let count = 0;
+
+        this.up = function () {
+          return ++count;
+        };
+
+        this.down = function () {
+          return --count;
+        };
+      }
+
+      let counterObj = new Counter();
+
+      console.log(counterObj.up()); // 1
+      console.log(counterObj.up()); // 2
+      console.log(counterObj.down()); // 1
+    </script>
+  </body>
+</html>
