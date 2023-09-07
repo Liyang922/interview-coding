@@ -16,7 +16,7 @@ class Scheduler {
         }
         
         this.runCount++;
-        this.queue.shift()().then(() => { 
+        this.queue.shift()().then(() => { // 没有错误处理、结果保存
             this.runCount--;
             this.request();
         });

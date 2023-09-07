@@ -1,3 +1,4 @@
+// 给定一个任务，失败后可以最多重试times次，但最多用时timeout，超时后也算失败
 function asyncRetry(fn, times, timeout = 0) {
   // fn必需
   // times必需，且为大于0的正整数
@@ -22,7 +23,7 @@ function asyncRetry(fn, times, timeout = 0) {
         }
       }
     }),
-    // 超时任务
+    // 定时任务判断是否超时
     new Promise((resolve, reject) => {
       setTimeout(() => {
         reject("retry error");
