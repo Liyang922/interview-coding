@@ -1,5 +1,5 @@
 // var new_array = arr.map(function callback(currentValue[, index[, array]]) {
-//     // Return element for new_array 
+//     Return element for new_array 
 //    }[, thisArg])
 
 Array.prototype.map = function(callback, thisArg) {

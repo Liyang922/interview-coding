@@ -19,11 +19,10 @@ function light(timeout, fn) {
 }
 
 // 实现原理：
-// 首先三个交替执行，和promise依次输出1,2,3一样，需要上一个resolved后new下一个
-// 同时return这个新的promise
+// 首先三个交替执行，和promise依次输出1,2,3一样，需要上一个resolved后new下一个，同时return这个新的promise
 // 循环：最后的then再执行一次step()
 function step() {
-  Promise.resolve() // 有没有return都可以
+  Promise.resolve()
     .then(() => {
       return light(3000, red); // 有return
       // 必须有return，因为then如果没有返回值，就是返回一个立即resolved的值为undefined的promise对象
@@ -36,7 +35,7 @@ function step() {
       return light(1000, yellow);
     })
     .then(() => {
-      step(); // 有没有return都可以
+      step();
     })
 }
 

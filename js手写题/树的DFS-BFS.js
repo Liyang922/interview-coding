@@ -1,4 +1,3 @@
-
 const tree = {
   val: 2345,
   children: [

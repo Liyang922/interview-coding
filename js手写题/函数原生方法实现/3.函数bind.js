@@ -4,13 +4,11 @@ Function.prototype.bind = function(thisArg, ...args) {
         throw new TypeError('Type Error');
     }
     
-    // 保存旧函数
     const self = this;
     
     return function F() {
-        // 如果通过new调用——new F()
-        if(this instanceof F) { //this指向new出的实例
-            return new self(...args, ...arguments); //args为原函数的参数，arguments为F()的参数
+        if(this instanceof F) {
+            return new self(...args, ...arguments);
         }
         // new.target也可以用来检查一个函数是否被new调用
         return self.apply(thisArg, [...args, ...arguments]);

@@ -2,7 +2,7 @@
 function parallel(tasks, maxCount) {
   return new Promise((resolve, reject) => {
     let index = 0;
-    let count = 0;
+    let count = 0; // 正在执行的任务数
     let result = [];
 
     function next() {
@@ -10,19 +10,26 @@ function parallel(tasks, maxCount) {
         resolve(result);
         return;
       }
+
       let cur = index++;
       count++;
-      tasks[cur]().then(res => {
-        result[cur] = res;
-      }).catch(err => {
-        reject(err);
-      }).finally(() => {
-        count--;
-        if (count < maxCount) {
-          next();
+      tasks[cur]().then(
+        res => {
+          result[cur] = res;
+        },
+        err => {
+          reject(err);
         }
-      })
+      ).finally(
+        () => {
+          count--;
+          if (count < maxCount) {
+            next();
+          }
+        }
+      )
     }
+
     for (let i = 0; i < maxCount; i++) {
       next();
     }

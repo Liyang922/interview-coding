@@ -1,6 +1,3 @@
-/**
- * @param 
- */
 function animate({duration, draw, timing}) {
 
   let start = performance.now();

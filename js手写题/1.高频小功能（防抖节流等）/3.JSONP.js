@@ -12,8 +12,8 @@ const jsonp = ({url, params, callbackName}) => {
     const generateUrl = () => {
         let dataSrc = '';
         for(let key in params) {
-            if(Object.prototype.hasOwnProperty.call(params, key)) { //不是特别理解为什么要借用原型方法，考虑了params不是对象类型吗？
-                dataSrc += `${key}=${params[key]}&`; // 直接用Object.keys()
+            if(Object.prototype.hasOwnProperty.call(params, key)) { // 不是特别理解为什么要借用原型方法，考虑了params不是对象类型吗？
+                dataSrc += `${key}=${params[key]}&`; // 直接用Object.keys()应该就可以
             }
         }
         dataSrc += `callback=${callbackName}`;

@@ -18,7 +18,6 @@ console.log(bird2.colors); // ['green', 'white', 'red']
 /* 
     问题：
         1.原型中包含引用值时，引用值在所有实例对象中共享。
-        (暂时无法get到这个问题的严重性，原型中的属性和方法本来不就是共享的吗？)
         2.子类型在实例化时不能给父类型的构造函数传参。
         （不懂）
     因此，原型链基本不会单独使用。
@@ -58,7 +57,7 @@ function Bird3 () {
     Animal3.call(this);
 }
 Bird3.prototype = new Animal3();
-Bird3.contructor = Bird3;
+Bird3.prototype.contructor = Bird3;
 
 /* 
     原型式继承：

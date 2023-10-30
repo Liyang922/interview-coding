@@ -7,7 +7,7 @@ function deepClone(target, hash = new WeakMap()) {
 
     if(hash.has(target)) return hash.get(target);
 
-    let res = target instanceof Array ? [] : {}; //Array.isArray()
+    let res = target instanceof Array ? [] : {}; // Array.isArray()
     // const res = new source.constructor(); // 妙啊
     hash.set(target, res);
 

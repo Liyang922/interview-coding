@@ -1,3 +1,4 @@
+// 方法一：通过普通函数实现迭代
 let range = {
   from: 1,
   to: 5,
@@ -16,7 +17,7 @@ range[Symbol.iterator] = function() {
   }
 }
 
-// 使用generator进行迭代
+// 方法二：使用generator进行迭代
 range = {
   from: 1,
   to: 5,
@@ -33,7 +34,8 @@ for(let a of range) {
   console.log(a);
 }
 
-// 异步迭代
+// 异步迭
+// 方法一
 range[Symbol.asyncIterator] = function() {
   return {
     current: this.from,
@@ -50,13 +52,19 @@ range[Symbol.asyncIterator] = function() {
   }
 }
 
-// 用异步generator写异步迭代
-// async *[Symbol.asyncIterator]() {
-//   for(let value = this.from; value <= this.to; value++) {
-//     await new Promise(resolve => setTimeout(resolve, 1000));
-//     yield value;
-//   }
-// }
+// 方法二：用异步generator写异步迭代
+range = {
+  from: 1,
+  to: 5,
+
+  async *[Symbol.asyncIterator]() {
+    for(let value = this.from; value <= this.to; value++) {
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      yield value;
+    }
+  }
+}
+
 
 // 异步for of
 (async () => {

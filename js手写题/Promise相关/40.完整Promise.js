@@ -1,4 +1,3 @@
-// 定义三个状态
 const PENDING = "PENDING";
 const FULFILLED = "FULFILLED";
 const REJECTED = "REJECTED";
@@ -18,6 +17,7 @@ class Promise {
     this.onFulfilledCallbacks = [];
     this.onRejectedCallbacks = [];
 
+    // 箭头函数没有自己的this，如果用普通函数，需要将this保存为其他变量再使用
     const resolve = (value) => {
       if (this.status === PENDING) {
         this.status = FULFILLED;
@@ -55,6 +55,7 @@ class Promise {
     return new Promise((resolve, reject) => {
       if (self.status === PENDING) {
         self.onFulfilledCallbacks.push(() => {
+          // 真正的promise里应该是微任务
           setTimeout(() => {
             try {
               const result = onFulfilled(self.value);
@@ -125,7 +126,7 @@ class Promise {
   }
   // Promise.resolve和Promise.reject都很少使用
 
-  // parament：可迭代对象
+  // 参数：可迭代对象
   static all(promiseAll) {
     const len = promiseAll.length;
     const values = new Array(len);

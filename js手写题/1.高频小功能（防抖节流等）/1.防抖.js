@@ -1,9 +1,10 @@
 // 触发高频事件后n秒内只会执行一次，如果n秒内事件再次触发，则重新计时
 
+// 写法一：
 const debounce = (fn, time) => {
     let timeout;
     return function() {
-        clearTimeout(timeout); // 没有判断timeout是否存在，因为clear的行为不改变timeout的值
+        clearTimeout(timeout); // 没有判断timeout是否存在
         let args = [...arguments];
         timeout = setTimeout(() => fn.call(this, ...args), time);
         // 箭头函数没有arguments对象，因此可以直接在setTimeout的回调中使用arguments
@@ -11,6 +12,7 @@ const debounce = (fn, time) => {
     }
 }
 
+// 写法二：
 function debounce(fn, timeout) {
     let timerId = null;
     return function f() {
@@ -24,6 +26,7 @@ function debounce(fn, timeout) {
       }, timeout);
     }
   }
+
 
 // 使用
 var node = document.getElementById('layout')

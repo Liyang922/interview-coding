@@ -1,4 +1,3 @@
-
 class Observer {
     subscribe(target, fn) {
         target.observerList.push(fn);

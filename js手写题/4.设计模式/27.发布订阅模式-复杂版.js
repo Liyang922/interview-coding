@@ -1,4 +1,3 @@
-// 发布/订阅设计模式(Pub/Sub)
 class EventBus {
     constructor() {
         this._eventList = {}
@@ -13,6 +12,7 @@ class EventBus {
         return EventBus._instance;
     }
 
+    // 相比1，就是在判断对象属性的增加了严谨性，只判断对象自身的属性，不用in判断
     onEvent(type, fn) {
         if (!this.isKeyInObj(this._eventList, type)) {
             Object.defineProperty(this._eventList, type, {
@@ -50,42 +50,3 @@ class EventBus {
 }
 
 module.exports = EventBus.Instance()
-
-
-// 发布订阅
-// 这个版本非常类似我自己写的，应该是对的吧？？
-class EventBus {
-    constructor() {
-      this.eventList = [];
-    }
-  
-    on(type, handler) {
-      if(!this.eventList[type]) {
-        this.eventList[type] = [handler];
-      } else {
-        this.eventList[type].push(handler);
-      }
-    }
-  
-    off(type, handler) {
-      if(!this.eventList[type]) {
-        return;
-      } else {
-        this.eventList[type] = this.eventList[type].filter(item => item != handler);
-      }
-    }
-  
-    emit(type, data) {
-      this.eventList[type] &&
-        this.eventList[type].forEach(handler => handler(data));
-    }
-  
-    once(type, handler) {
-      function fn() {
-        handler();
-        this.off(type, fn);
-      }
-      this.on(type, fn);
-    }
-}
-

@@ -1,5 +1,3 @@
-const { object } = require("prop-types");
-
 let obj1 = {
   a: 1,
   b: {c: 1},

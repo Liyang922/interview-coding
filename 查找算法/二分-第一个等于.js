@@ -1,4 +1,3 @@
-// 
 function binarySearch(arr, num) {
   let len = arr.length;
   let l = 0;

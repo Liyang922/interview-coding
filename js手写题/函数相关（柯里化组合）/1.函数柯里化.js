@@ -1,6 +1,7 @@
 function add(a, b, c) {
     return a + b + c
 }
+
 add.length = 3;
 add(1, 2, 3)
 let addCurry = curry(add)

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      body {
+        display: flex;
+      }
+      .red {
+        background-color: #d26868;
+      }
+      .blue {
+        background-color: #50a09c;
+      }
+      .column {
+        padding: 10%;
+        justify-content: center;
+        flex-direction: row;
+      }
+      .column div {
+        text-align: center;
+      }
+      ul,
+      li {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      li {
+        height: 30px;
+        width: 30px;
+        background: #fff;
+        text-align: center;
+        border-radius: 50px;
+      }
+      ul {
+        display: flex;
+        width: 100px;
+        height: 100px;
+        margin: 0 auto;
+        background: #333;
+        border-radius: 10px;
+      }
+      .container-a1 {
+        align-items: center;
+        justify-content: center;
+      }
+
+      .container-a2 {
+        align-items: center;
+        justify-content: space-around;
+      }
+
+      .containera-a3 {
+        justify-content: space-between;
+      }
+      .container-a3 li:nth-child(2) {
+        align-self: center;
+      }
+      .container-a3 li:nth-child(3) {
+        align-self: flex-end;
+      }
+
+      .container-a4 {
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+      .container-a4 .row {
+        display: flex;
+        flex-basis: 100%;
+        align-items: center;
+        justify-content: space-around;
+      }
+
+      .container-b1 {
+        align-items: flex-end;
+        justify-content: flex-end;
+      }
+      .container-b2 {
+        align-items: flex-end;
+        justify-content: space-between;
+      }
+      .container-b2 li:nth-child(2) {
+        align-self: flex-start;
+      }
+      .container-b3 {
+        align-items: center;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .container-b4 {
+        flex-wrap: wrap;
+        align-items: center;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+      }
+
+      .container-b5 {
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: space-around;
+      }
+      .container-b5 .row {
+        display: flex;
+        flex-basis: 100%;
+        flex-direction: column;
+        justify-content: space-around;
+      }
+    </style>
+
+    <div class="column red">
+      <ul class="container-a1">
+        <li></li>
+      </ul>
+      <div>(一)</div>
+      <ul class="container-a2">
+        <li></li>
+        <li></li>
+      </ul>
+      <div>(二)</div>
+      <ul class="container-a3">
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+      <div>(三)</div>
+      <ul class="container-a4">
+        <div class="row">
+          <li></li>
+          <li></li>
+        </div>
+        <div class="row">
+          <li></li>
+          <li></li>
+        </div>
+      </ul>
+      <div>(四)</div>
+      <ul class="container-a4">
+        <div class="row">
+          <li></li>
+          <li></li>
+        </div>
+        <div class="row">
+          <li></li>
+        </div>
+        <div class="row">
+          <li></li>
+          <li></li>
+        </div>
+      </ul>
+      <div>(五)</div>
+      <ul class="container-a4">
+        <div class="row">
+          <li></li>
+          <li></li>
+        </div>
+        <div class="row">
+          <li></li>
+          <li></li>
+        </div>
+        <div class="row">
+          <li></li>
+          <li></li>
+        </div>
+      </ul>
+      <div>(六)</div>
+    </div>
+
+    <div class="column blue">
+      <ul class="container-b1">
+        <li></li>
+      </ul>
+      <div>(一)</div>
+      <ul class="container-b2">
+        <li></li>
+        <li></li>
+      </ul>
+      <div>(二)</div>
+      <ul class="container-b3">
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+      <div>(三)</div>
+      <ul class="container-b4">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+      <div>(四)</div>
+      <ul class="container-b5">
+        <div class="row">
+          <li></li>
+          <li></li>
+        </div>
+        <div class="row">
+          <li></li>
+        </div>
+        <div class="row">
+          <li></li>
+          <li></li>
+        </div>
+      </ul>
+      <div>(五)</div>
+      <ul class="container-b5">
+        <div class="row">
+          <li></li>
+          <li></li>
+        </div>
+        <div class="row">
+          <li></li>
+          <li></li>
+        </div>
+        <div class="row">
+          <li></li>
+          <li></li>
+        </div>
+      </ul>
+      <div>(六)</div>
+    </div>
+  </body>
+</html>

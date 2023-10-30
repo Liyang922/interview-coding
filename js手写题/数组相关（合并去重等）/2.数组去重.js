@@ -2,7 +2,7 @@ const arr = [1, 1, '1', 17, true, true, false, false, 'true', 'a', {}, {}];
 // => [1, '1', 17, true, false, 'true', 'a', {}, {}]
 
 // 方法一：利用Set
-// 注：无法去除重复的空对象，
+// 注：无法去除重复的空对象
 const res1 = Array.from(new Set(arr));
 
 // 方法二：filter() + lastIndexOf() or indexOf()

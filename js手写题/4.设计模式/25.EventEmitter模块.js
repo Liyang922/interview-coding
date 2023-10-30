@@ -1,8 +1,6 @@
 // node中回调函数机制
-// 观察者模式
 class EventEmitter {
     constructor() {
-        // 存储所有type类型的事件的回调函数
         // type : {callback: fn, once: true}
         this.events = new Map();
     }
@@ -10,13 +8,10 @@ class EventEmitter {
     addListener(type, fn, once = false) {
         const handler = this.events.get(type);
         if(!handler) {
-            // 没有type绑定事件
             this.events.set(type, wrapCallback(fn, once));
         } else if (handler && typeof handler === "function") {
-            // 目前type事件只有一个回调
             this.events.set(type, [handler, wrapCallback(fn, once)]);
         } else {
-            // 目前type事件回调>=2
             handler.push(wrapCallback(fn, once));
         }
     }
@@ -34,7 +29,6 @@ class EventEmitter {
             handler.forEach((item, index) => {
                 if(item.callback === listener.callback) {
                     handler.splice(index, 1);
-                    // type事件回调只剩一个时，将数组改为单个值
                     if(handler.length == 1) {
                         this.events.set(type, handler[0]);
                     }
@@ -76,6 +70,7 @@ class EventEmitter {
         }
     }
 }
+
 function wrapCallback(fn, once = false) {
     return {callback: fn, once};
 }
