@@ -30,7 +30,6 @@ async function preloadImage(imgUrls, timeout) {
       })
     }
   }, timeout);
-  
 }
 
 // polyfill
@@ -43,8 +42,4 @@ if (!Promise.allSettled) {
     return Promise.all(convertedPromises);
   };
 }
-// promise的then也可以捕获错误！！
-// 只不过通常我们只用then处理成功的情况，错误情况交给catch
-// catch(f) === then(null, f)
-// 错误情况 == rejected，因为出现的错误都会被promise reject
 

@@ -1,4 +1,4 @@
-// 渲染大量数据时，使用createDocumentFragment和requestAnimationFrame，将渲染操作分割成一段一段的
+// 时间分片：渲染大量数据时，使用createDocumentFragment和requestAnimationFrame，将渲染操作分割成一段一段的
 setTimeout(() => {
     const totalCount = 10000;
     const once = 20;
